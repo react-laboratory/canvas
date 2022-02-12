@@ -1,0 +1,3 @@
+[submodule "src/animator"]
+	path = src/animator
+	url = https://github.com/javascript-laboratory/animator
