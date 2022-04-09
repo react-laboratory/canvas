@@ -1,9 +1,9 @@
 import React, { useRef, useEffect } from "react";
 import supportsPassive from "./supportsPassive";
-import Animator from "./animator";
+import Animator from "./animator/src";
 
-type CanvasProps = {
-  draw: (canvasElement: HTMLCanvasElement, timeDelta?: number) => void;
+type ComponentProps = {
+  draw?: (canvasElement: HTMLCanvasElement, timeDelta?: number) => void;
   animate?: boolean;
 } & JSX.IntrinsicAttributes &
   React.ClassAttributes<HTMLCanvasElement> &
@@ -11,7 +11,10 @@ type CanvasProps = {
 
 const eventOptions = supportsPassive ? { passive: true } : false;
 
-export const useCanvas = (draw: (canvasElement: HTMLCanvasElement, timeDelta?: number) => void, animate = false) => {
+export const useCanvas = (
+  draw: (canvasElement: HTMLCanvasElement, timeDelta?: number) => void = () => {},
+  animate: boolean = false
+) => {
   const canvasRef: React.MutableRefObject<HTMLCanvasElement | null> = useRef(null);
 
   useEffect(() => {
@@ -56,11 +59,11 @@ export const useCanvas = (draw: (canvasElement: HTMLCanvasElement, timeDelta?: n
   return canvasRef;
 };
 
-const Canvas = (props: CanvasProps) => {
+const Component = (props: ComponentProps) => {
   const { draw, animate, ...rest } = props;
   const canvasRef = useCanvas(draw, animate);
 
   return <canvas ref={canvasRef} {...rest} />;
 };
 
-export default Canvas;
+export default Component;

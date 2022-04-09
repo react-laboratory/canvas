@@ -2,7 +2,7 @@
   "name": "canvas",
   "version": "0.0.1",
   "description": "A react component for canvas.",
-  "main": "src/canvas.tsx",
+  "main": "src/component.tsx",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

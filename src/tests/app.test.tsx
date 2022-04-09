@@ -1,7 +1,7 @@
 import { render } from "@testing-library/react";
 
-import App from "../app";
+import Component from "../component";
 
-test("renders the app component", () => {
-  render(<App />);
+test("renders the component", () => {
+  render(<Component />);
 });
